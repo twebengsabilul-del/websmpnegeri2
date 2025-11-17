@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SMP NEGERI 2 SIWALAN - NPSN : 20323516</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏫</text></svg>">
+
+    <meta name="description" content="Website resmi SMP Negeri 2 Siwalan. Membentuk generasi cerdas, kreatif, dan berkarakter.">
+    <meta name="keywords" content="SMP Negeri 2 Siwalan, SMPN 2 Siwalan, Sekolah Penggerak, SPMB Pekalongan">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll; 
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+        }
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-bg {
+            background-image: url('gambar.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- Animasi Fade-in --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-element.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animated {
+            /* Kelas pemicu */
+        }
+
+        /* --- Transisi Halaman --- */
+        .content-transition {
+            opacity: 1; 
+            display: block;
+        }
+        .content-hiding {
+            opacity: 0 !important;
+            max-height: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            pointer-events: none; 
+        }
+        .content-hidden {
+            display: none !important;
+        }
+
+        /* --- CSS Galeri Lightbox --- */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -1.5rem;
+            right: -1.5rem;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* --- Efek "Shine Sweep" Galeri --- */
+        .gallery-item-wrap {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            transition: all 0.3s ease-in-out; 
+            transform: scale(1);
+            cursor: pointer;
+        }
+        .gallery-item-wrap:hover {
+            transform: scale(1.03);
+        }
+        .gallery-item-wrap::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%; 
+            width: 75%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            z-index: 10;
+            transition: left 0.5s ease-in-out; 
+        }
+        .gallery-item-wrap:hover::before {
+            left: 125%;
+            transition-duration: 0.7s;
+        }
+        .gallery-item-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: none; 
+        }
+
+        /* --- Aturan CSS baru untuk Dropdown --- */
+        .group:hover > .dropdown-menu,
+        .dropdown-open > .dropdown-menu {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* --- Rotasi chevron saat hover ATAU dropdown-open --- */
+        .group:hover > span > i,
+        .dropdown-open > span > i {
+            transform: rotate(180deg);
+        }
+
+        /* --- CSS Tampilan Cetak (Print) --- */
+        @media print {
+            html {
+                overflow-y: visible;
+            }
+            body {
+                font-family: 'Times New Roman', serif;
+                background-color: #FFFFFF;
+                color: #000000;
+            }
+            header, footer, .hero-bg, .features-section, .bg-gray-50, .bg-blue-50 {
+                display: none !important;
+            }
+            .content-section {
+                display: none !important;
+            }
+            .content-section:not(.content-hidden) {
+                display: block !important;
+                opacity: 1 !important;
+                max-height: none !important;
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+                margin: 0 !important;
+            }
+            * {
+                background: transparent !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+                border: none !important;
+            }
+            a[href]:after {
+                content: " (" attr(href) ")";
+                font-size: 0.8rem;
+                font-style: italic;
+            }
+            a[data-target]:after {
+                content: "";
+            }
+            iframe[src*="google.com/maps"]:after {
+                content: "";
+            }
+            img, iframe {
+                max-width: 100% !important;
+                display: block;
+            }
+            .grid, .flex {
+                display: block !important;
+                flex-direction: column !important;
+            }
+        }
+
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Wrapper Utama -->
+    <div class="min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="bg-white/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-200 transition-shadow duration-300">
+            <div class="bg-blue-600 text-xs text-white">
+                <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-1">
+                            <i data-lucide="phone" class="w-3 h-3 text-yellow-300"></i>
+                            <span>Informasi Pendaftaran: 081332428433</span>
+                        </div>
+                        <div class="hidden md:flex items-center gap-1">
+                            <i data-lucide="mail" class="w-3 h-3 text-yellow-300"></i>
+                            <span>email: smpn02siwalan@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="container mx-auto px-6 py-3">
+                <div class="flex justify-between items-center">
+                    <a href="#" data-target="home-content" class="flex items-center gap-2">
+                        <img src="logo.png" alt="Logo SMP Negeri 2 Siwalan" class="h-10 w-10 border-2 border-blue-500 rounded-md transition-transform duration-300 hover:scale-105">
+                        <div>
+                            <h1 class="text-sm font-bold font-poppins text-gray-800">SMP NEGERI 2 SIWALAN</h1>
+                            <p class="text-xs text-gray-500">NPSN : 203323516 </p>
+                        </div>
+                    </a>
+
+                    <ul class="hidden lg:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                        <!-- PERUBAHAN EFEK: Menambahkan inline-block, transition-all, dan hover:-translate-y-0.5 -->
+                        <li><a href="#" data-target="home-content" class="inline-block hover:text-blue-600 transition-all duration-300 border-b-2 border-transparent hover:border-blue-600 pb-1 hover:-translate-y-0.5">HOME</a></li>
+                        
+                        <li class="relative group">
+                            <!-- PERUBAHAN EFEK: Menambahkan transition-all dan hover:-translate-y-0.5 -->
+                            <span class="hover:text-blue-600 transition-all duration-300 flex items-center cursor-default border-b-2 border-transparent pb-1 hover:-translate-y-0.5" role="button">
+                                PROFIL <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-300"></i>
+                            </span>
+                            <div class="dropdown-menu absolute hidden bg-white rounded-md shadow-lg mt-2 py-2 w-48 border border-gray-100 transition-opacity duration-300 opacity-0">
+                                <a href="#" data-target="tentang-kami-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">TENTANG KAMI</a>
+                                <a href="#" data-target="visi-misi-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">VISI MISI</a>
+                                <a href="#" data-target="guru-staf-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">GURU & STAF</a>
+                                <a href="#" data-target="fasilitas-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">FASILITAS</a>
+                                <a href="#" data-target="kurikulum-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">KURIKULUM</a>
+                            </div>
+                        </li>
+
+                        <li class="relative group">
+                            <!-- PERUBAHAN EFEK: Menambahkan transition-all dan hover:-translate-y-0.5 -->
+                            <span class="hover:text-blue-600 transition-all duration-300 flex items-center cursor-default border-b-2 border-transparent pb-1 hover:-translate-y-0.5" role="button">
+                                KEGIATAN <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-300"></i>
+                            </span>
+                            <div class="dropdown-menu absolute hidden bg-white rounded-md shadow-lg mt-2 py-2 w-48 border border-gray-100 transition-opacity duration-300 opacity-0">
+                                <a href="#" data-target="prestasi-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">PRESTASI</a>
+                                <a href="#" data-target="ekstrakurikuler-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">EKSTRAKURIKULER</a>
+                                <a href="#" data-target="gallery-section" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-500 hover:text-white transition-colors duration-200">GALLERY</a>
+                            </div>
+                        </li>
+
+                        <!-- PERUBAHAN EFEK: Menambahkan inline-block, transition-all, dan hover:-translate-y-0.5 -->
+                        <li><a href="#" data-target="pendaftaran-section" class="inline-block hover:text-blue-600 transition-all duration-300 border-b-2 border-transparent hover:border-blue-600 pb-1 hover:-translate-y-0.5">PENDAFTARAN</a></li>
+                        <li><a href="#" data-target="lokasi-section" class="inline-block hover:text-blue-600 transition-all duration-300 border-b-2 border-transparent hover:border-blue-600 pb-1 hover:-translate-y-0.5">LOKASI</a></li>
+                    </ul>
+
+                    <button id="menu-btn" class="lg:hidden text-gray-700" aria-label="Buka menu navigasi">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </nav>
+            
+            <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 bg-white transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+                 <ul class="flex flex-col space-y-4 text-sm font-medium pt-4 text-gray-600">
+                    <li><a href="#" data-target="home-content" class="block hover:text-blue-600 transition-colors duration-300">HOME</a></li>
+                    <li><span class="font-bold text-blue-600">PROFIL</span></li>
+                    <li class="ml-4"><a href="#" data-target="tentang-kami-section" class="block hover:text-blue-600 transition-colors duration-300">TENTANG KAMI</a></li>
+                    <li class="ml-4"><a href="#" data-target="visi-misi-section" class="block hover:text-blue-600 transition-colors duration-300">VISI MISI</a></li>
+                    <li class="ml-4"><a href="#" data-target="guru-staf-section" class="block hover:text-blue-600 transition-colors duration-300">GURU & STAF</a>
+                    <li class="ml-4"><a href="#" data-target="fasilitas-section" class="block hover:text-blue-600 transition-colors duration-300">FASILITAS</a></li>
+                    <li class="ml-4"><a href="#" data-target="kurikulum-section" class="block hover:text-blue-600 transition-colors duration-300">KURIKULUM</a></li>
+                    <li><span class="font-bold text-blue-600">KEGIATAN</span></li>
+                    <li class="ml-4"><a href="#" data-target="prestasi-section" class="block hover:text-blue-600 transition-colors duration-300">PRESTASI</a></li>
+                    <li class="ml-4"><a href="#" data-target="ekstrakurikuler-section" class="block hover:text-blue-600 transition-colors duration-300">EKSTRAKURIKULER</a></li>
+                    <li class="ml-4"><a href="#" data-target="gallery-section" class="block hover:text-blue-600 transition-colors duration-300">GALLERY</a></li>
+                    <li><a href="#" data-target="pendaftaran-section" class="block hover:text-blue-600 transition-colors duration-300 font-bold">PENDAFTARAN</a></li>
+                    <li><a href="#" data-target="lokasi-section" class="block hover:text-blue-600 transition-colors duration-300">LOKASI</a></li>
+                </ul>
+            </div>
+        </header>
+
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <!-- ... (Seluruh konten HTML Anda dari #home-content hingga #contact-content tidak berubah) ... -->
+            <div id="home-content" class="content-section content-transition" data-title="Home">
+                <section class="hero-bg relative h-[calc(100vh-200px)] min-h-[500px] mt-24">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <div class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center text-left">
+                        <p class="text-yellow-400 font-semibold font-poppins fade-in-element" style="transition-delay: 0.2s;">Selamat Datang di</p>
+                        <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold font-poppins leading-tight mt-2 text-white fade-in-element" style="transition-delay: 0.3s;">
+                            SMP NEGERI 2 SIWALAN
+                        </h2>
+                        <p class="text-xl md:text-2xl font-poppins mt-3 text-gray-200 fade-in-element" style="transition-delay: 0.5s;">Membentuk Generasi Cerdas, Kreatif, dan Berkarakter.</p>
+                        <a href="#" data-target="tentang-kami-section" class="mt-8 bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-md w-fit hover:bg-yellow-500 transition-colors duration-300 shadow-lg transform hover:scale-105 fade-in-element" style="transition-delay: 0.7s;">
+                            Selengkapnya Tentang Kami
+                        </a>
+                    </div>
+                </section>
+                
+                <section class="features-section bg-gray-50 py-16">
+                    <div class="container mx-auto px-6 -mt-32 relative z-20">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm flex items-center gap-5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-gray-300 fade-in-element" style="transition-delay: 0.2s;">
+                                <div class="bg-yellow-400/10 p-4 rounded-full text-yellow-500">
+                                    <i data-lucide="star" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold font-poppins text-gray-800">KURIKULUM MERDEKA </h3>
+                                    <a href="#" data-target="kurikulum-section" class="text-xs text-yellow-600 hover:underline mt-1 inline-block transition-colors duration-300">LIHAT KURIKULUM ></a>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm flex items-center gap-5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-gray-300 fade-in-element" style="transition-delay: 0.3s;">
+                                <div class="bg-blue-500/10 p-4 rounded-full text-blue-500">
+                                    <i data-lucide="book-open-check" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold font-poppins text-gray-800">PRESTASI HEBAT</h3>
+                                    <a href="#" data-target="prestasi-section" class="text-xs text-blue-600 hover:underline mt-1 inline-block transition-colors duration-300">LIHAT PRESTASI ></a>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm flex items-center gap-5 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-gray-300 fade-in-element" style="transition-delay: 0.5s;">
+                                <div class="bg-green-500/10 p-4 rounded-full text-green-500">
+                                    <i data-lucide="school-2" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold font-poppins text-gray-800">FASILITAS MODERN</h3>
+                                    <a href="#" data-target="fasilitas-section" class="text-xs text-green-600 hover:underline mt-1 inline-block transition-colors duration-300">LIHAT FASILITAS ></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-20 bg-white">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-12 fade-in-element" style="transition-delay: 0.2s;">
+                            <h2 class="text-3xl font-bold font-poppins text-gray-800">Mengapa Memilih SMP NEGERI 2 SIWALAN ?</h2>
+                            <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Kami berkomitmen untuk memberikan pendidikan terbaik yang seimbang antara akademis, karakter, dan pengembangan bakat.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                            <div class="flex items-start gap-4 fade-in-element" style="transition-delay: 0.2s;">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-lg flex-shrink-0">
+                                    <i data-lucide="award" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg font-poppins text-gray-800">Akademis Berprestasi</h4>
+                                    <p class="text-gray-600 mt-1">Kurikulum yang adaptif dan didukung oleh guru-guru berkualitas yang berdedikasi untuk mencetak siswa berprestasi.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 fade-in-element" style="transition-delay: 0.3s;">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-lg flex-shrink-0">
+                                    <i data-lucide="shield-check" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg font-poppins text-gray-800">Pengembangan Karakter</h4>
+                                    <p class="text-gray-600 mt-1">Kami menanamkan nilai-nilai disiplin, tanggung jawab, dan akhlak mulia melalui program pembiasaan yang terstruktur.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 fade-in-element" style="transition-delay: 0.4s;">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-lg flex-shrink-0">
+                                    <i data-lucide="cpu" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg font-poppins text-gray-800">Fokus Teknologi & Inovasi</h4>
+                                    <p class="text-gray-600 mt-1">Siswa dibekali dengan keterampilan digital melalui lab komputer modern dan kegiatan seperti klub robotika.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 fade-in-element" style="transition-delay: 0.5s;">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-lg flex-shrink-0">
+                                    <i data-lucide="users-2" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg font-poppins text-gray-800">Lingkungan yang Mendukung</h4>
+                                    <p class="text-gray-600 mt-1">Kami menciptakan suasana belajar yang aman, nyaman, dan inklusif bagi semua siswa untuk berkembang.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-10 bg-gray-50">
+                    <div class="container mx-auto px-6 text-center">
+                        <div class="max-w-3xl mx-auto p-6 bg-white rounded-lg border border-gray-200 fade-in-element" style="transition-delay: 0.2s;">
+                            <h3 class="text-xl font-bold font-poppins text-blue-600 mb-2">Punya Pertanyaan?</h3>
+                            <p class="text-gray-600">Silakan hubungi kami langsung di nomor 0813-3242-8433 atau kirim email ke smpn02siwalan@gmail.com untuk informasi lebih lanjut.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+            <div id="tentang-kami-section" class="content-section content-transition content-hidden py-20 pt-28 bg-white" data-title="Tentang Kami">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col lg:flex-row gap-12 items-center">
+                        <div class="lg:w-5/12 fade-in-element" style="transition-delay: 0.2s;">
+                            <img src="sekolah.jpeg" alt="Siswa SMP Negeri 2 Siwalan belajar di kelas" class="rounded-lg shadow-lg w-full object-cover h-[500px]" loading="lazy">
+                        </div>
+                        <div class="lg:w-7/12">
+                            <h2 class="text-3xl font-bold font-poppins text-gray-800 fade-in-element" style="transition-delay: 0.2s;">Mengenal Lebih Dekat SMP NEGERI 2 SIWALAN </h2>
+                            <p class="text-gray-600 leading-relaxed mt-4 mb-8 fade-in-element" style="transition-delay: 0.2s;">
+                                Didirikan pada tahun 2003, SMP NEGERI 2 SIWALAN adalah sekolah penggerak yang berdedikasi untuk menciptakan lingkungan belajar yang inspiratif. Kami mengintegrasikan kurikulum merdeka dengan program pengembangan karakter dan teknologi untuk mempersiapkan siswa menghadapi tantangan masa depan.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex items-start gap-4 transition-all duration-300 hover:scale-105 hover:shadow-md fade-in-element" style="transition-delay: 0.3s;">
+                                    <div class="bg-blue-100 text-blue-600 p-3 rounded-md mt-1">
+                                        <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold font-poppins text-gray-800">20+ Tahun Pengalaman</h4>
+                                        <p class="text-sm text-gray-500">Mendidik dan membimbing generasi muda sejak tahun 2003.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex items-start gap-4 transition-all duration-300 hover:scale-105 hover:shadow-md fade-in-element" style="transition-delay: 0.4s;">
+                                    <div class="bg-blue-100 text-blue-600 p-3 rounded-md mt-1">
+                                        <i data-lucide="award" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold font-poppins text-gray-800">NPSN : 203323516</h4>
+                                        <p class="text-sm text-gray-500">Menjadi bagian dari program transformasi pendidikan nasional.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex items-start gap-4 transition-all duration-300 hover:scale-105 hover:shadow-md fade-in-element" style="transition-delay: 0.5s;">
+                                    <div class="bg-blue-100 text-blue-600 p-3 rounded-md mt-1">
+                                        <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold font-poppins text-gray-800">Fokus Pada Inovasi</h4>
+                                        <p class="text-gray-600 mt-1">Mengintegrasikan teknologi dalam pembelajaran sehari-hari.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex items-start gap-4 transition-all duration-300 hover:scale-105 hover:shadow-md fade-in-element" style="transition-delay: 0.6s;">
+                                    <div class="bg-blue-100 text-blue-600 p-3 rounded-md mt-1">
+                                        <i data-lucide="users" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold font-poppins text-gray-800">Guru Berkompeten</h4>
+                                        <p class="text-gray-600 mt-1">Tenaga pendidik profesional yang siap membimbing siswa.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="kurikulum-section" class="content-section content-transition content-hidden py-20 pt-28 bg-white" data-title="Kurikulum">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 fade-in-element" style="transition-delay: 0.2s;">
+                        <i data-lucide="star" class="w-16 h-16 mx-auto text-yellow-500 mb-4"></i>
+                        <h2 class="text-4xl font-bold font-poppins text-gray-800">Kurikulum Merdeka</h2>
+                        <p class="text-gray-500 mt-3 max-w-2xl mx-auto">Kami mengadopsi Kurikulum Merdeka untuk memberikan pembelajaran yang lebih relevan, mendalam, dan menyenangkan bagi setiap siswa.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-lg border-t-4 border-yellow-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.2s;">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full">
+                                    <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-lg font-bold font-poppins text-gray-800">Pembelajaran Berbasis Proyek</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Siswa didorong untuk aktif memecahkan masalah melalui proyek-proyek kolaboratif yang relevan dengan dunia nyata (P5).</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg border-t-4 border-yellow-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.3s;">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full">
+                                    <i data-lucide="book-check" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-lg font-bold font-poppins text-gray-800">Fokus Materi Esensial</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Mengurangi kepadatan materi sehingga guru dan siswa memiliki lebih banyak waktu untuk pendalaman dan pemahaman yang bermakna.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg border-t-4 border-yellow-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.4s;">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full">
+                                    <i data-lucide="users" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-lg font-bold font-poppins text-gray-800">Fleksibilitas & Diferensiasi</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm">Guru memiliki keleluasaan untuk menyesuaikan metode pengajaran sesuai dengan tingkat kemampuan dan minat unik setiap siswa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="visi-misi-section" class="content-section content-transition content-hidden pt-28 bg-gray-50" data-title="Visi & Misi">
+                <div class="bg-blue-800 py-20 text-white fade-in-element" style="transition-delay: 0.2s;">
+                    <div class="container mx-auto px-6 text-center">
+                        <i data-lucide="eye" class="w-16 h-16 mx-auto text-yellow-400 mb-4"></i>
+                        <h2 class="text-3xl font-bold font-poppins mb-4">Visi Kami</h2>
+                        <p class="text-2xl font-poppins text-blue-100 max-w-3xl mx-auto">"Terwujudnya Lulusan Yang Cerdas,Berbudaya,Mandiri Dan Berprestasi."</p>
+                    </div>
+                </div>
+
+                <div class="py-20 bg-gray-50">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-16 fade-in-element" style="transition-delay: 0.2s;">
+                             <i data-lucide="rocket" class="w-16 h-16 mx-auto text-blue-600 mb-4"></i>
+                            <h2 class="text-4xl font-bold font-poppins text-gray-800">Misi Kami</h2>
+                            <p class="text-gray-500 mt-3 max-w-2xl mx-auto">Untuk mencapai visi tersebut, kami berkomitmen menjalankan misi-misi berikut:</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.2s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">1.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Pembelajaran Efektif</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Melaksanakan proses pembelajaran dan bimbingan secara efektif dan menyenangkan.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.3s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">2.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Semangat Keunggulan</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Menumbuhkan semangat,keunggulan untuk berprestasi.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.4s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">3.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Disiplin & Santun</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Menumbuhkan rasa disiplin, tertib dan santun.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.5s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">4.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Keimanan & Penghayatan</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Menumbuhkan keimanan dan penghayatan terhadap ajaran agama yang dianutnya.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.6s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">5.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Partisipasi Aktif</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Mengembangkan partisipasi aktif seluruh warga sekolah.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.7s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">6.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Kemandirian</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Menumbuhkan kemandirian dalam menggali ilmu.</p>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.8s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">7.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Tanggap Perubahan</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Mewujudkan peserta didik yang tanggap dan peduli terhadap perubahan.</p>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-lg border-b-4 border-blue-500 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 fade-in-element h-full" style="transition-delay: 0.9s;">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <span class="text-2xl font-bold text-blue-500">8.</span>
+                                    <h3 class="text-lg font-bold font-poppins text-gray-800">Peduli Lingkungan</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm">Mewujudkan lingkungan sekolah yang bersih, sejuk, aman, nyaman dan kondusif.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="guru-staf-section" class="content-section content-transition content-hidden py-20 pt-28 bg-white" data-title="Guru & Staf">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl font-bold font-poppins mb-12 text-gray-800 fade-in-element" style="transition-delay: 0.2s;">Guru & Staf Pengajar</h2>
+                    <div class="max-w-4xl mx-auto fade-in-element" style="transition-delay: 0.2s;">
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                            <div class="p-4 bg-gray-50 border-b border-gray-200 grid grid-cols-2 gap-4">
+                                <span class="font-semibold text-gray-600 text-left">Nama Guru</span>
+                                <span class="font-semibold text-gray-600 text-left">Mata Pelajaran / Jabatan</span>
+                            </div>
+                            <ul class="divide-y divide-gray-200">
+                                <!-- Daftar Guru Lengkap -->
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Iwan Teguh Setiawan, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Kepala sekolah.</span>
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Wiwik Komariyah, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Seni Budaya</span>
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Casutri, S.Pd., M.Pd.</span>
+                                    <span class="text-sm text-blue-600">Prakarya</span>
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Dra. Endang Yuliwanti.</span>
+                                    <span class="text-sm text-blue-600">BP/BK</span>
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Ariyah, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Ilmu Pengetahuan Alam</span>
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Erwiyati, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Ilmu Pengertahuan Sosial</span>
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Wawan Setyawan, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Matematika</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Sri Ningsih, S.Pd. Bio.</span>
+                                    <span class="text-sm text-blue-600">Ilmu Pemgetahuan Alam</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Agus Salim, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Ilmu Pengetahuan Sosial</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Sugeng Wiranto, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Bahasa Indonesia</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Mohamad Yusup, S.Ag.</span>
+                                    <span class="text-sm text-blue-600">Pendidikan Agama Islam Dan BP</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Nurjazira, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Bahasa Indonesia</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Nurnaningsih, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Bahasa Inggis</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Sri Rahayu, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Bahasa Inggris</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Qonita Umi Sari, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">BP DAN BK</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Evi Sukmawati, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Matematika</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Sokhi Sofiyani, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Bahasa Indonesia</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Ambar Widi Hartoyo, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">PKN/PPKN</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Hilmi Ghozali, S.Pd.I.</span>
+                                    <span class="text-sm text-blue-600">PAI DAN BP</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">M. Agus Syarufudin. ST.Pamungkas, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">PJOK</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Lili Mulyani, S.Pd.</span>
+                                    <span class="text-sm text-blue-600">Bahasa Jawa</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Prasmadya Saputra, S.Kom.</span>
+                                    <span class="text-sm text-blue-600">Informatika / TIK</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Dwi Rahayu, S.Akt.</span>
+                                    <span class="text-sm text-blue-600">Pengadministrasi Keuangan </span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Cartutik, A.Md.</span>
+                                    <span class="text-sm text-blue-600">Pengadministrasi Kepegawaian</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Noviandi.</span>
+                                    <span class="text-sm text-blue-600">Pengadministrasi Kurikulum</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Puji Pangestoni.</span>
+                                    <span class="text-sm text-blue-600">Pengadministrasi Sarpras</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Ritno Rusfiyandi.</span>
+                                    <span class="text-sm text-blue-600">Pengadministrasi Umum</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Lili Kholidha Eri, A.Md.</span>
+                                    <span class="text-sm text-blue-600">Pengadministrasi Perpustakaan</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Daryanto.</span>
+                                    <span class="text-sm text-blue-600">Petugas Keamanan</span> 
+                                </li>
+                                <li class="p-4 grid grid-cols-2 gap-4 items-center hover:bg-gray-50 transition-colors duration-200 text-left">
+                                    <span class="font-medium text-gray-800">Kasbi.</span>
+                                    <span class="text-sm text-blue-600">Pramubhakti</span> 
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="prestasi-section" class="content-section content-transition content-hidden py-20 pt-28 bg-gray-50" data-title="Prestasi">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 fade-in-element" style="transition-delay: 0.2s;">
+                        <i data-lucide="award" class="w-16 h-16 mx-auto text-yellow-500 mb-4"></i>
+                        <h2 class="text-4xl font-bold font-poppins text-gray-800">Galeri Prestasi Siswa</h2>
+                        <p class="text-gray-500 mt-3 max-w-2xl mx-auto">Kami bangga atas pencapaian siswa-siswi kami di berbagai bidang, baik akademik maupun non-akademik.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.2s;">
+                            <img src="prestasi1.jpg" alt="Juara Pencak Silat" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5 border-t-4 border-yellow-500">
+                                <h3 class="text-lg font-bold font-poppins text-gray-800">Juara 1 Seni Tunggal Putra Tingkat PRA Remaja</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Tahun 2024 - Tingkat Kabupaten Pekalongan</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.3s;">
+                            <img src="prestasi2.jpg" alt="Olimpiade Sains" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5 border-t-4 border-yellow-500">
+                                <h3 class="text-lg font-bold font-poppins text-gray-800">Pesilat Terbaik Putra Tingkat PRA Remaja</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Tahun 2024 - Tingkat Kabupaten Pekalongan</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.4s;">
+                            <img src="https://placehold.co/600x400/E3F2FD/1565C0?text=MHQ" alt="Juara MHQ" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5 border-t-4 border-yellow-500">
+                                <h3 class="text-lg font-bold font-poppins text-gray-800">Juara Umum 3 Popda Tingkat SMP</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Tahun 2023 - Tingkat kabupaten pekalongan </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fasilitas-section" class="content-section content-transition content-hidden py-20 pt-28 bg-white" data-title="Fasilitas">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 fade-in-element" style="transition-delay: 0.2s;">
+                        <i data-lucide="school-2" class="w-16 h-16 mx-auto text-green-600 mb-4"></i>
+                        <h2 class="text-4xl font-bold font-poppins text-gray-800">Fasilitas Sekolah</h2>
+                        <p class="text-gray-500 mt-3 max-w-2xl mx-auto">Kami menyediakan lingkungan belajar yang lengkap, modern, dan nyaman untuk mendukung proses pendidikan.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.2s;">
+                            <img src="kelas.jpg" alt="Ruang Kelas" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold font-poppins text-gray-800">Ruang Kelas Nyaman</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Kelas yang nyaman, terang, dan tertata rapi untuk mendukung proses belajar yang fokus, aktif, dan menyenangkan bagi setiap siswa.
+
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.3s;">
+                            <img src="musola.jpg" alt="Mushola" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold font-poppins text-gray-800">Mushola</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Sarana ibadah yang bersih dan tenang untuk mendukung kegiatan keagamaan dan pembentukan karakter.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.4s;">
+                            <img src="lab.jpg" alt="Laboratorium Komputer" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold font-poppins text-gray-800">Laboratorium Komputer</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Dilengkapi dengan komputer modern dan koneksi internet cepat untuk mendukung pembelajaran TIK.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.5s;">
+                            <img src="perpus.jpg" alt="Perpustakaan" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold font-poppins text-gray-800">Perpustakaan</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Koleksi buku yang lengkap, dari buku pelajaran hingga fiksi, untuk menumbuhkan minat baca siswa.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.6s;">
+                            <img src="lapangan.jpg" alt="Lapangan Olahraga" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold font-poppins text-gray-800">Lapangan Olahraga</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Lapangan multifungsi untuk berbagai kegiatan olahraga seperti basket, futsal, dan upacara.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 fade-in-element" style="transition-delay: 0.7s;">
+                            <img src="kantin.jpg" alt="Kantin Sehat" class="w-full h-56 object-cover" loading="lazy">
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold font-poppins text-gray-800">Kantin Sehat</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Menyediakan makanan dan minuman yang bersih, sehat, dan bergizi bagi siswa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ekstrakurikuler-section" class="content-section content-transition content-hidden py-20 pt-28 bg-white" data-title="Ekstrakurikuler">
+                <div class="container mx-auto px-6 text-center">
+                    <div class="fade-in-element" style="transition-delay: 0.2s;">
+                        <h2 class="text-3xl font-bold font-poppins mb-4 text-gray-800">Kembangkan Bakat & Minatmu</h2>
+                        <p class="text-gray-500 mb-12 max-w-2xl mx-auto">Kami fokus pada program unggulan untuk membentuk karakter dan prestasi siswa secara mendalam.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                        <div class="group relative rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 fade-in-element" style="transition-delay: 0.2s;">
+                            <img src="silat3.jpg" alt="Pencak Silat" class="w-full h-80 object-cover" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                <h4 class="text-2xl font-bold font-poppins text-white">Pencak Silat</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i data-lucide="hand-fist" class="w-12 h-12 text-yellow-400 mb-4"></i>
+                                <h4 class="text-xl font-bold font-poppins text-white mb-2">Bela Diri & Fisik</h4>
+                                <a href="#" data-target="detail-pencaksilat" class="mt-4 bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded-md text-sm hover:bg-yellow-500 transition-colors">Lihat Detail</a>
+                            </div>
+                        </div>
+
+                        <div class="group relative rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 fade-in-element" style="transition-delay: 0.3s;">
+                            <img src="pramuka3.jpg" alt="Pramuka" class="w-full h-80 object-cover" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                <h4 class="text-2xl font-bold font-poppins text-white">Pramuka</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i data-lucide="tent" class="w-12 h-12 text-yellow-400 mb-4"></i>
+                                <h4 class="text-xl font-bold font-poppins text-white mb-2">Petualangan & Alam</h4>
+                                <a href="#" data-target="detail-pramuka" class="mt-4 bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded-md text-sm hover:bg-yellow-500 transition-colors">Lihat Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="detail-pencaksilat" class="content-section content-transition content-hidden py-20 pt-28 bg-gray-50" data-title="Detail Pencak Silat">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 fade-in-element" style="transition-delay: 0.2s;">
+                        <i data-lucide="hand-fist" class="w-16 h-16 mx-auto text-blue-600 mb-4"></i>
+                        <h2 class="text-4xl font-bold font-poppins text-gray-800">Ekstrakurikuler Pencak Silat</h2>
+                        <p class="text-gray-500 mt-3 max-w-2xl mx-auto">Membentuk pribadi yang tangguh, disiplin, dan berjiwa ksatria melalui seni bela diri warisan budaya bangsa.</p>
+                        <a href="#" data-target="ekstrakurikuler-section" class="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                            <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Kembali ke Daftar Ekstrakurikuler
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <h3 class="text-2xl font-bold font-poppins mb-6 text-gray-800 fade-in-element" style="transition-delay: 0.2s;">Galeri Kegiatan</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <img src="silat1.jpg" alt="Galeri Silat 1" class="w-full h-48 object-cover rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer fade-in-element" style="transition-delay: 0.3s;" loading="lazy">
+                                <img src="silat3.jpg" alt="Galeri Silat 2" class="w-full h-48 object-cover rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer fade-in-element" style="transition-delay: 0.4s;" loading="lazy">
+                                <img src="silat2.jpg" alt="Galeri Silat 3" class="w-full h-48 object-cover rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer fade-in-element" style="transition-delay: 0.5s;" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg fade-in-element" style="transition-delay: 0.3s;">
+                            <h3 class="text-xl font-bold font-poppins text-gray-800 mb-4">Informasi</h3>
+                            <ul class="space-y-4 text-gray-700">
+                                <li class="flex items-center gap-3"><i data-lucide="user-check" class="w-5 h-5 text-blue-600"></i><div><span class="font-semibold">Pembina:</span><br>Bapak M. Agus Syarufudin. ST.Pamungkas.</div></li>
+                                <li class="flex items-center gap-3"><i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i><div><span class="font-semibold">Jadwal:</span><br>Setiap Jumat, 14:00 - 16:00</div></li>
+                            </ul>
+                            <h3 class="text-xl font-bold font-poppins text-gray-800 mt-6 mb-4">Prestasi Unggulan</h3>
+                            <ul class="space-y-3 list-disc list-inside text-gray-700 text-sm">
+                                <li>Juara 1 Seni Tunggal Putra PRA Remaja</li>
+                                <li>Juara Umum 3 Popda Tingkat SMP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="detail-pramuka" class="content-section content-transition content-hidden py-20 pt-28 bg-gray-50" data-title="Detail Pramuka">
+                 <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 fade-in-element" style="transition-delay: 0.2s;">
+                        <i data-lucide="tent" class="w-16 h-16 mx-auto text-blue-600 mb-4"></i>
+                        <h2 class="text-4xl font-bold font-poppins text-gray-800">Ekstrakurikuler Pramuka</h2>
+                        <p class="text-gray-500 mt-3 max-w-2xl mx-auto">Membangun kepemimpinan, kemandirian, dan cinta alam melalui Gerakan Pramuka yang aktif dan menyenangkan.</p>
+                        <a href="#" data-target="ekstrakurikuler-section" class="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                            <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Kembali ke Daftar Ekstrakurikuler
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <h3 class="text-2xl font-bold font-poppins mb-6 text-gray-800 fade-in-element" style="transition-delay: 0.2s;">Galeri Kegiatan</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <img src="pramuka1.jpg" alt="Galeri Pramuka 1" class="w-full h-48 object-cover rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer fade-in-element" style="transition-delay: 0.3s;" loading="lazy">
+                                <img src="pramuka2.jpg" alt="Galeri Pramuka 2" class="w-full h-48 object-cover rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer fade-in-element" style="transition-delay: 0.4s;" loading="lazy">
+                                <img src="pramuka3.jpg" alt="Galeri Pramuka 3" class="w-full h-48 object-cover rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer fade-in-element" style="transition-delay: 0.5s;" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg fade-in-element" style="transition-delay: 0.3s;">
+                            <h3 class="text-xl font-bold font-poppins text-gray-800 mb-4">Informasi</h3>
+                            <ul class="space-y-4 text-gray-700">
+                                <li class="flex items-center gap-3"><i data-lucide="user-check" class="w-5 h-5 text-blue-600"></i><div><span class="font-semibold">Pembina:</span><br>Bapak Sugeng Wiranto.</div></li>
+                                <li class="flex items-center gap-3"><i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i><div><span class="font-semibold">Jadwal:</span><br>Setiap Jum'at, 13:30 - 16:00</div></li>
+                            </ul>
+                            <h3 class="text-xl font-bold font-poppins text-gray-800 mt-6 mb-4">Prestasi Unggulan</h3>
+                            <ul class="space-y-3 list-disc list-inside text-gray-700 text-sm">
+                                <li>Juara Umum Lomba Tingkat II</li>
+                                <li>Regu Terbaik Jambore Cabang 2023</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gallery-section" class="content-section content-transition content-hidden py-20 pt-28 bg-gray-50" data-title="Galeri">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl font-bold font-poppins mb-12 text-gray-800 fade-in-element" style="transition-delay: 0.2s;">Galeri Kegiatan</h2>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.2s;">
+                            <img src="kegiatan1.jpg" alt="Galeri Foto Kegiatan 1" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.3s;">
+                            <img src="kegiatan2.jpg" alt="Galeri Foto Kegiatan 2" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.4s;">
+                            <img src="kegiatan3.jpg" alt="Galeri Foto Kegiatan 3" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.5s;">
+                            <img src="kegiatan4.jpg" alt="Galeri Foto Kegiatan 4" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.6s;">
+                            <img src="kegiatan5.jpg" alt="Galeri Foto Kegiatan 5" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.7s;">
+                            <img src="kegiatan6.jpg" alt="Galeri Foto Kegiatan 6" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.8s;">
+                            <img src="kegiatan7.jpg" alt="Galeri Foto Kegiatan 7" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                        <div class="gallery-item-wrap w-full h-64 fade-in-element" style="transition-delay: 0.9s;">
+                            <img src="kegiatan8.jpg" alt="Galeri Foto Kegiatan 8" class="w-full h-64 object-cover" data-lightbox="gallery" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pendaftaran-section" class="content-section content-transition content-hidden py-20 pt-28 bg-white" data-title="Pendaftaran">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 fade-in-element" style="transition-delay: 0.2s;">
+                        <h2 class="text-4xl font-bold font-poppins text-blue-600">Sistem Penerimaan Murid Baru (SPMB) 2025/2026</h2>
+                        <p class="text-gray-600 mt-3 max-w-3xl mx-auto">Bergabunglah bersama kami! Persiapkan diri Anda untuk menjadi bagian dari keluarga besar SMP NEGERI 2 SIWALAN .</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                        <div class="fade-in-element" style="transition-delay: 0.4s;">
+                            <h3 class="text-2xl font-bold font-poppins mb-6 text-gray-800 flex items-center gap-2">
+                                <i data-lucide="file-check-2" class="w-6 h-6 text-green-600"></i>
+                                Persyaratan Dokumen
+                            </h3>
+                            <ol class="space-y-6">
+                                <li class="bg-green-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-green-500 shadow-sm">
+                                    <div class="bg-green-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">1</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">NISN</p>
+                                        <p class="text-sm text-gray-600">(Nomor Induk Siswa Nasional)</p>
+                                    </div>
+                                </li>
+                                <li class="bg-green-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-green-500 shadow-sm">
+                                    <div class="bg-green-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">2</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">Akta Lahir</p>
+                                        <p class="text-sm text-gray-600">(Asli dan File Scan)</p>
+                                    </div>
+                                </li>
+                                <li class="bg-green-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-green-500 shadow-sm">
+                                    <div class="bg-green-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">3</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">Kartu Keluarga</p>
+                                        <p class="text-sm text-gray-600">(Asli dan File Scan)</p>
+                                    </div>
+                                </li>
+                                <li class="bg-green-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-green-500 shadow-sm">
+                                    <div class="bg-green-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">4</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">KIP/KIS/PKH</p>
+                                        <p class="text-sm text-gray-600">(Untuk jalur Afirmasi)</p>
+                                    </div>
+                                </li>
+                                <li class="bg-green-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-green-500 shadow-sm">
+                                    <div class="bg-green-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">5</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">SIKS-NG Print Out</p>
+                                        <p class="text-sm text-gray-600">(Jalur Afirmasi)</p>
+                                    </div>
+                                </li>
+                                <li class="bg-green-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-green-500 shadow-sm">
+                                    <div class="bg-green-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">6</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">Piagam Prestasi</p>
+                                        <p class="text-sm text-gray-600">(Asli dan Scan)</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <div class="fade-in-element" style="transition-delay: 0.6s;">
+                            <h3 class="text-2xl font-bold font-poppins mb-6 text-gray-800 flex items-center gap-2">
+                                <i data-lucide="trending-up" class="w-6 h-6 text-yellow-600"></i> Alur Pendaftaran
+                            </h3>
+                            <ol class="space-y-6">
+                                <li class="bg-yellow-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-yellow-500 shadow-sm">
+                                    <div class="bg-yellow-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">1</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">Pendaftaran Online</p>
+                                        <p class="text-sm text-gray-600">Mengisi formulir dan mengunggah dokumen di portal resmi SPMB.</p>
+                                    </div>
+                                </li>
+                                <li class="bg-yellow-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-yellow-500 shadow-sm">
+                                    <div class="bg-yellow-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">2</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">Verifikasi Berkas</p>
+                                        <p class="text-sm text-gray-600">Panitia memverifikasi kelengkapan dan keabsahan dokumen pendaftar.</p>
+                                    </div>
+                                </li>
+                                <li class="bg-yellow-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-yellow-500 shadow-sm">
+                                    <div class="bg-yellow-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">3</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">Seleksi/Tes Potensi</p>
+                                        <p class="text-sm text-gray-600">Pelaksanaan tes potensi akademik dan wawancara (jadwal diumumkan kemudian).</p>
+                                    </div>
+                                </li>
+                                <li class="bg-yellow-50 p-4 rounded-lg flex items-center gap-4 border-l-4 border-yellow-500 shadow-sm">
+                                    <div class="bg-yellow-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">4</div>
+                                    <div>
+                                        <p class="font-bold text-gray-800">Pengumuman Kelulusan</p>
+                                        <p class="text-sm text-gray-600">Hasil seleksi diumumkan melalui website resmi dan papan pengumuman sekolah.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 text-center p-6 bg-gray-50 rounded-lg border border-gray-200 fade-in-element" style="transition-delay: 0.8s;">
+                        <p class="text-lg font-semibold text-gray-800">Informasi lebih lanjut dapat menghubungi panitia SPMB : </p>
+                        <p class="text-blue-600 font-bold mt-2">Bapak Noviandi (+62 857-4752-8688)</p>
+                    </div>
+                </div>
+            </div>
+            
+     <div id="lokasi-section" class="content-section content-transition content-hidden py-20 pt-28 bg-gray-50" data-title="Lokasi">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-element" style="transition-delay: 0.2s;">
+                <h2 class="text-3xl md:text-4xl font-bold font-poppins text-gray-800">Temukan Kami</h2>
+                <p class="text-gray-500 mt-4 max-w-3xl mx-auto">Kami berlokasi strategis dan mudah dijangkau dari berbagai arah.</p>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="w-full rounded-xl overflow-hidden shadow-lg border border-gray-200 fade-in-element" style="transition-delay: 0.2s;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9701783510565!2d109.58662577755716!3d-6.877064734610843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fe2f309a47851%3A0x6b801a357f49553!2sSMP%20NEGERI%202%2sISWALAN!5e0!3m2!1sid!2sid!4v1701389025916!5m2!1sid!2sid" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg shadow-inner flex flex-col justify-center h-full fade-in-element" style="transition-delay: 0.4s;">
+                    <h3 class="text-2xl font-poppins font-semibold text-indigo-700 mb-4 border-b pb-2">Informasi Kontak</h3>
+                    
+                    <p class="text-gray-800 text-lg mb-4 flex items-start">
+                        <i data-lucide="map-pin" class="inline-block w-6 h-6 mr-3 text-indigo-600 flex-shrink-0 mt-1"></i>
+                        <span>
+                            <strong class="font-bold block text-xl mb-1">Alamat Sekolah:</strong> 
+                            Jl. Kalikangkung, Desa Yosorejo, Kecamatan Siwalan, Kabupaten Pekalongan, Jawa Tengah, 51137
+                        </span>
+                    </p>
+                    <p class="text-gray-800 text-lg mb-4 flex items-center">
+                        <i data-lucide="phone" class="inline-block w-6 h-6 mr-3 text-indigo-600 flex-shrink-0"></i>
+                        <span>
+                            <strong class="font-bold">Telepon:</strong> +62 857-4752-8688
+                        </span>
+                    </p>
+                    <p class="text-gray-800 text-lg mb-4 flex items-center">
+                        <i data-lucide="mail" class="inline-block w-6 h-6 mr-3 text-indigo-600 flex-shrink-0"></i>
+                        <span>
+                            <strong class="font-bold">Email:</strong> smpn2siwalan@gmail.com
+                        </span>
+                    </p>
+                    <p class="text-gray-800 text-lg flex items-center">
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <section id="contact-content" class="content-section content-transition content-hidden py-20 pt-28 bg-white" data-title="Kontak">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-poppins font-bold text-gray-800 mb-8 text-center fade-in-element" style="transition-delay: 0.2s;">Hubungi Kami</h2>
+                <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-2xl border border-gray-200 fade-in-element" style="transition-delay: 0.2s;">
+                    <form action="#" method="POST" class="space-y-6" id="contact-form">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                                placeholder="Masukkan Nama Anda">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                                placeholder="Masukkan Email Anda">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Pesan</label>
+                            <textarea id="message" name="message" rows="5" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                                placeholder="Tuliskan pesan atau pertanyaan Anda di sini..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.01]">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                    <div id="contact-message" class="mt-4 p-3 rounded-lg text-center hidden"></div>
+                </div>
+            </div>
+        </section>
+        </main>
+        
+        <footer class="bg-white border-t border-gray-200">
+            <div class="container mx-auto px-6 py-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <a href="#" class="flex items-center gap-2 mb-4">
+                            <img src="logo.png" alt="Logo SMP Negeri 2 Siwalan" class="h-10 w-10 border-2 border-blue-500 rounded-md">
+                            <div>
+                                <h1 class="text-sm font-bold font-poppins text-gray-800">SMP NEGERI 2 SIWALAN</h1>
+                                <p class="text-xs text-gray-500">NPSN : 203323516</p>
+                            </div>
+                        </a>
+                        <p class="text-sm text-gray-500">Sekolah Menengah Pertama Negeri yang mencetak generasi pemimpin masa depan.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4 text-gray-800">Tautan Cepat</h4>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a href="#" data-target="visi-misi-section" class="hover:text-blue-600 transition-colors duration-300">Visi & Misi</a></li>
+                            <li><a href="#" data-target="pendaftaran-section" class="hover:text-blue-600 transition-colors duration-300">Pendaftaran</a></li>
+                            <li><a href="#" data-target="gallery-section" class="hover:text-blue-600 transition-colors duration-300">Gallery</a></li>
+                            <li><a href="#" data-target="lokasi-section" class="hover:text-blue-600 transition-colors duration-300">Lokasi</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4 text-gray-800">Hubungi Kami</h4>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 mt-1 text-blue-600 flex-shrink-0"></i><span>4HFP+3JM, Sumur Wetan, Yosorejo, Kec. Siwalan, Kabupaten Pekalongan, Jawa Tengah 51137</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="phone" class="w-4 h-4 mt-1 text-blue-600 flex-shrink-0"></i><span>081332428433</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="mail" class="w-4 h-4 mt-1 text-blue-600 flex-shrink-0"></i><span>smpn2siwalan@gmail.com</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4 text-gray-800">Ikuti Media Sosial</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://web.facebook.com/groups/1199704280111681/permalink/23993033853685400/?rdid=4BrnsSQutdLdXSgf&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2Fp%2F19z8UiWnTg%2F%3F_rdc%3D1%26_rdr" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition-colors duration-300" aria-label="Facebook SMP Negeri 2 Siwalan"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                            <a href="https://www.instagram.com/smpn_2_siwalan?igsh=aGxweHhpdHVjZjk5" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition-colors duration-300" aria-label="Instagram SMP Negeri 2 Siwalan"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                            <a href="https://youtube.com/@smpnegeri2siwalankab.pekal601?si=oGDaHSzbUcDODvbS" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition-colors duration-300" aria-label="YouTube SMP Negeri 2 Siwalan"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
+                    <p>&copy; 2025 SMK MA'ARIF NU TIRTO. Seluruh hak cipta dilindungi.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                void mobileMenu.offsetWidth; 
+                mobileMenu.classList.add('max-h-[500px]'); 
+                mobileMenu.classList.add('py-4');
+                menuBtn.setAttribute('aria-label', 'Tutup menu navigasi');
+            } else {
+                mobileMenu.classList.remove('max-h-[500px]');
+                mobileMenu.classList.remove('py-4');
+                menuBtn.setAttribute('aria-label', 'Buka menu navigasi');
+                setTimeout(() => {
+                    if (!isMenuOpen) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }, 300);
+            }
+        });
+
+        // --- Intersection Observer untuk .fade-in-element ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated'); 
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        
+        // --- Logika Dropdown Desktop (Versi One-Click Toggle Sederhana) ---
+        const setupDesktopDropdowns = () => {
+            const dropdownGroups = document.querySelectorAll('header nav ul > li.group');
+
+            dropdownGroups.forEach(group => {
+                const toggle = group.querySelector('span[role="button"]'); 
+                if (!toggle) return;
+
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation(); 
+                    
+                    const parentLi = group;
+                    const wasOpen = parentLi.classList.contains('dropdown-open');
+
+                    // 1. Tutup SEMUA dropdown
+                    dropdownGroups.forEach(li => {
+                        li.classList.remove('dropdown-open');
+                    });
+
+                    // 2. Jika yang diklik tadi dalam keadaan TERTUTUP, BUKA dia.
+                    if (!wasOpen) {
+                        parentLi.classList.add('dropdown-open');
+                    }
+                });
+            });
+
+            // 3. Tutup semua dropdown jika mengklik di luar area
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('li.group')) {
+                    dropdownGroups.forEach(li => {
+                        li.classList.remove('dropdown-open');
+                    });
+                }
+            });
+        };
+
+
+        // Page Navigation Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            setupDesktopDropdowns(); 
+
+            const navLinks = document.querySelectorAll('a[data-target]');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            const simpleNavLinks = document.querySelectorAll('header nav .container > ul > li > a[data-target]');
+            const dropdownParents = document.querySelectorAll('header nav .container > ul > li.group');
+
+            const TRANSITION_DURATION = 10; 
+
+            const showSection = (targetId) => {
+                
+                const targetSection = document.getElementById(targetId);
+                if (!targetSection) {
+                    console.error("Target section not found:", targetId);
+                    return;
+                }
+
+                const title = targetSection.getAttribute('data-title') || 'Home';
+                document.title = `${title} - SMP Negeri 2 Siwalan`;
+                
+                contentSections.forEach(section => {
+                    const isTarget = section.id === targetId;
+
+                    if (!isTarget) {
+                        if (!section.classList.contains('content-hidden')) {
+                            section.classList.add('content-hiding');
+                            setTimeout(() => {
+                                if (section.id !== targetId) { 
+                                    section.classList.add('content-hidden');
+                                }
+                            }, TRANSITION_DURATION); 
+                        }
+                    } else {
+                        section.classList.remove('content-hidden');
+                        
+                        const elementsToAnimate = section.querySelectorAll('.fade-in-element');
+                        elementsToAnimate.forEach(el => {
+                            el.classList.remove('animated'); 
+                            observer.unobserve(el); 
+                            observer.observe(el); 
+                        });
+                        
+
+                        setTimeout(() => {
+                            section.classList.remove('content-hiding');
+                        }, 50); 
+                    }
+                });
+
+                // --- PERBAIKAN TOTAL: Logika Update Status Aktif (Warna Biru) ---
+                
+                // 1. Reset semua link simpel (HOME, PENDAFTARAN, LOKASI)
+                simpleNavLinks.forEach(link => {
+                    link.classList.remove('text-blue-600', 'font-semibold', 'border-blue-600');
+                    link.classList.add('text-gray-600', 'border-transparent');
+                });
+
+                // 2. Reset semua span parent dropdown (PROFIL, KEGIATAN)
+                dropdownParents.forEach(parentLi => {
+                    const parentSpan = parentLi.querySelector('span[role="button"]');
+                    const icon = parentSpan ? parentSpan.querySelector('i') : null;
+                    
+                    if (parentSpan) {
+                        // PERBAIKAN 2: Reset class border
+                        parentSpan.classList.remove('text-blue-600', 'font-semibold', 'border-blue-600');
+                        parentSpan.classList.add('text-gray-600', 'border-transparent');
+                    }
+                    if (icon) {
+                        icon.style.transform = 'rotate(0deg)'; // Reset rotasi
+                    }
+                });
+
+                // 3. Cari dan aktifkan link simpel yang benar
+                let foundActive = false;
+                simpleNavLinks.forEach(link => {
+                    if (link.getAttribute('data-target') === targetId) {
+                        link.classList.add('text-blue-600', 'font-semibold', 'border-blue-600');
+                        link.classList.remove('text-gray-600', 'border-transparent');
+                        foundActive = true;
+                    }
+                });
+
+                // 4. Jika tidak ketemu, cari dan aktifkan parent dropdown yang benar
+                if (!foundActive) {
+                    dropdownParents.forEach(parentLi => {
+                        const dropdownLinks = parentLi.querySelectorAll('.dropdown-menu a[data-target]');
+                        let isDropdownActive = false;
+                        
+                        dropdownLinks.forEach(dropdownLink => {
+                            if (dropdownLink.getAttribute('data-target') === targetId) {
+                                isDropdownActive = true;
+                            }
+                        });
+
+                        // Jika targetId ditemukan di dalam dropdown ini
+                        if (isDropdownActive) {
+                            const parentSpan = parentLi.querySelector('span[role="button"]');
+                            const icon = parentSpan ? parentSpan.querySelector('i') : null;
+                            
+                            if (parentSpan) {
+                                // PERBAIKAN 2: Tambahkan class border
+                                parentSpan.classList.add('text-blue-600', 'font-semibold', 'border-blue-600');
+                                parentSpan.classList.remove('text-gray-600', 'border-transparent');
+                            }
+                            if (icon) {
+                                icon.style.transform = 'rotate(180deg)'; // Set rotasi aktif
+                            }
+                        }
+                    });
+                }
+                // --- AKHIR PERBAIKAN TOTAL ---
+
+                window.scrollTo(0, 0); 
+                
+                setTimeout(() => {
+                    lucide.createIcons();
+                }, TRANSITION_DURATION);
+            };
+
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    showSection(targetId);
+
+                    if (isMenuOpen) {
+                        isMenuOpen = false;
+                        mobileMenu.classList.remove('max-h-[500px]');
+                        mobileMenu.classList.remove('py-4');
+                        menuBtn.setAttribute('aria-label', 'Buka menu navigasi');
+                        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                    }
+
+                    // PERBAIKAN 1: Tutup SEMUA dropdown, tidak peduli link mana yang diklik
+                    dropdownParents.forEach(li => {
+                        li.classList.remove('dropdown-open');
+                    });
+                });
+            });
+
+            // Initial setup
+            contentSections.forEach(section => {
+                if (section.id !== 'home-content') {
+                    section.classList.add('content-hidden');
+                    section.classList.add('content-hiding');
+                }
+            });
+
+            const initialTargetSection = document.querySelector('#home-content');
+            if (initialTargetSection) {
+                const initialTitle = initialTargetSection.getAttribute('data-title') || 'Home';
+                document.title = `${initialTitle} - SMP Negeri 2 Siwalan`;
+            } else {
+                document.title = `SMP Negeri 2 Siwalan`;
+            }
+            
+            const allElementsToAnimate = document.querySelectorAll('.fade-in-element');
+            allElementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+            
+            const homeLink = document.querySelector('a[data-target="home-content"]');
+            if (homeLink && !homeLink.closest('.dropdown-menu')) { 
+                homeLink.classList.add('text-blue-600', 'font-semibold', 'border-blue-600');
+                homeLink.classList.remove('text-gray-600', 'border-transparent');
+            }
+        });
+
+        // --- JavaScript untuk Lightbox ---
+        document.addEventListener('click', function (e) {
+            if (e.target.matches('img[data-lightbox="gallery"]')) {
+                e.preventDefault();
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'lightbox-overlay';
+                
+                const content = document.createElement('div');
+                content.className = 'lightbox-content';
+                
+                const img = document.createElement('img');
+                img.src = e.target.src; 
+                img.alt = e.target.alt;
+                
+                const closeBtn = document.createElement('div');
+                closeBtn.className = 'lightbox-close';
+                closeBtn.innerHTML = '&times;';
+                
+                content.appendChild(img);
+                overlay.appendChild(content); 
+                overlay.appendChild(closeBtn);
+                document.body.appendChild(overlay);
+                
+                setTimeout(() => overlay.style.opacity = '1', 10);
+                
+                const closeLightbox = () => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => document.body.removeChild(overlay), 300);
+                };
+                
+                overlay.addEventListener('click', closeLightbox);
+                closeBtn.addEventListener('click', closeLightbox);
+                content.addEventListener('click', (ev) => ev.stopPropagation());
+            }
+        });
+
+    </script>
+</body>
+</html>
